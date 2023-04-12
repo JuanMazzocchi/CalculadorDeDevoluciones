@@ -111,6 +111,9 @@ const Principal = () => {
 
 
     }
+    
+
+
     const total=()=>{
         let suma=0
         for(let i =0 ;i<cantidades.length;i++){
@@ -133,7 +136,8 @@ const Principal = () => {
         if (isNaN(suma)){
             return 0
         }
-                
+        
+        
         return suma.toFixed(2)
     }
     const cupo=(e)=>{
@@ -148,13 +152,13 @@ const Principal = () => {
 
   return (<> 
   <nav style={{position:"fixed",top:"0",backgroundColor:"rgb(182, 196, 222)",width:"100%",margin:"0",padding:"0",display:"flex", justifyContent:"space-evenly"}}>
-            <img src="/public/download.jpg" alt="Osito" width="70vw" />
-                <p style={{fontSize:"large",fontFamily:"monospace",fontWeight:"bolder" }}>Suma total de Productos: $ {total()} </p><p style={{paddingRight:"2rem", fontFamily:"monospace",fontWeight:"bolder"}}>Cupo de Devolucion (Opcional) $<input type='number'  style={{width:"12vh"}} onChange={cupo} ></input></p>
+            <img src="/download.jpg" alt="Osito" width="70vw" />
+                <p style={{fontSize:"large",fontFamily:"monospace",fontWeight:"bolder" }}>Suma total de Productos: $ {total()} </p><p style={{paddingRight:"2rem", fontFamily:"monospace",fontWeight:"bolder"}}>Cupo de Devolucion (Opcional) $<input type='number'  style={{width:"12vh"}} onChange={cupo} ></input>{tePasaste==true ? (<><p style={{fontSize:"x-large",color:"red",fontWeight:"bolder"}}>Te Pasaste </p></>):(<></>)}</p>
             
             </nav>
      <div style={{justifyContent:"center",textAlign:"center",padding:"6rem 0.5rem 0 0.5rem" }}>
         <div style={{backgroundColor:"rgba(93, 214, 255, 0.1)"}}>
-        <div>{tePasaste==true ? (<><p style={{fontSize:"x-large",color:"red",fontWeight:"bolder"}}>Te Pasaste</p></>):(<></>)}</div>
+        <div>{tePasaste==true ? (<><p style={{fontSize:"x-large",color:"red",fontWeight:"bolder"}}>Te Pasaste </p></>):(<></>)}</div>
            
             <h2>Listado de Productos</h2>
                          
@@ -165,7 +169,7 @@ const Principal = () => {
              
             return (< >
                     <tr  id={index} >
-                        <td  style={{width:"2%"}}><input style={{width:"2vw"}} type='number'   name={item.name}  min={0} alt={item.precio} onChange={nuevaCantidad}></input></td>
+                        <td  style={{width:"2%"}}><input style={{width:"4vw"}} type='number'   name={item.name}  min={0} alt={item.precio} onChange={nuevaCantidad}></input></td>
                         <td  > <p style={{fontSize:"0.75rem"}} >{item.name}</p> </td>
                         <td><p style={{fontSize:"0.75rem"}} >${item.precio}</p></td>
                         <td><p  style={{fontSize:"0.75rem"}}>SubTotal:$ {isNaN(subtotal(item.name,item.precio)) ? (<>0</>):(<>{subtotal(item.name,item.precio)}</>) }</p></td>
